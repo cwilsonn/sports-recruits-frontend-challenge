@@ -11,12 +11,14 @@
         <h1 class="text-lg">Academic Fit Report</h1>
       </div>
     </section>
+    <AcademicFitTable class="col-span-3 row-span-1" :report="athlete.report"></AcademicFitTable>
     <div class="h-2 col-span-3 row-span-1 bg-brand-primary"></div>
   </article>
 </template>
 
 <script setup>
 import AcademicFitAthleteSummary from './AcademicFitAthleteSummary.vue';
+import AcademicFitTable from './AcademicFitTable.vue';
 
 defineProps({
   athlete: {
