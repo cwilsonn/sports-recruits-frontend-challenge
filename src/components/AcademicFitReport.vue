@@ -1,39 +1,22 @@
 <template>
-  <div>
-    <div class="info">
-      <h2>{{ athlete.name }}</h2>
-      <ul>
-        <li>
-          <label>Sport:</label>
-          {{ athlete.sport }}
-        </li>
-        <li>
-          <label>Class:</label>
-          {{ athlete.grad_year }}
-        </li>
-        <li>
-          <label>Club:</label>
-          {{ athlete.club.name }}
-        </li>
-        <li>
-          <label>High School:</label>
-          {{ athlete.high_school.name }}
-        </li>
-        <li>
-          <label>GPA:</label>
-          {{ athlete.gpa }}
-        </li>
-        <li>
-          <label>Desired Major:</label>
-          {{ athlete.major }}
-        </li>
-      </ul>
-    </div>
-  </div>
+  <article class="container grid grid-flow-row grid-cols-[3rem_auto_3rem] grid-rows-auto">
+    <div class="h-2 col-span-2 row-span-1 bg-brand-primary"></div>
+    <section
+      class="flex flex-col items-start justify-between col-span-1 col-start-2 row-span-1 py-16 gap-y-12 lg:flex-row lg:gap-y-0 academic-fit__summary">
+      <AcademicFitAthleteSummary :athlete="athlete"></AcademicFitAthleteSummary>
+      <div class="flex flex-col items-end -order-1 lg:order-2">
+        <img src="../assets/images/sr-insights-logo.png"
+          alt="SportsRecruits Insights logo"
+          class="max-h-16">
+        <h1 class="text-lg">Academic Fit Report</h1>
+      </div>
+    </section>
+    <div class="h-2 col-span-3 row-span-1 bg-brand-primary"></div>
+  </article>
 </template>
 
 <script setup>
-import { defineProps } from 'vue';
+import AcademicFitAthleteSummary from './AcademicFitAthleteSummary.vue';
 
 defineProps({
   athlete: {
