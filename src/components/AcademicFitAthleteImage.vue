@@ -42,7 +42,7 @@ const computedAthleteImgFallbackClasses = computed(() => {
   return Object.keys(regexTailwindBgColorMap).map(key => {
     const regex = new RegExp(key);
     if (regex.test(props.athleteName.split(' ')[1])) {
-      return `athlete-image__fallback flex items-center justify-center h-full w-full font-bold text-xl ${regexTailwindBgColorMap[key]}`;
+      return `athlete-image__fallback flex items-center justify-center h-full w-full font-bold text-xl text-white ${regexTailwindBgColorMap[key]}`;
     }
   });
 });
