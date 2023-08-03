@@ -56,7 +56,7 @@
 <script setup>
 import { computed } from 'vue';
 
-import AcademicFitTableGPACell from './AcademicFitTableGPACell.vue';
+import AcademicFitTableGPACell from '@/components/AcademicFitTableGPACell.vue';
 
 const props = defineProps({
   row: {

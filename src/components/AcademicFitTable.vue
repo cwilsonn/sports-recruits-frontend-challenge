@@ -70,7 +70,7 @@
 </template>
 
 <script setup>
-import AcademicFitTableRow from './AcademicFitTableRow.vue';
+import AcademicFitTableRow from '@/components/AcademicFitTableRow.vue';
 
 defineProps({
   report: {

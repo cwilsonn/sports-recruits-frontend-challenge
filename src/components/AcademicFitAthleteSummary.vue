@@ -18,7 +18,7 @@
 <script setup>
 import { computed } from 'vue';
 
-import AcademicFitAthleteImage from './AcademicFitAthleteImage.vue';
+import AcademicFitAthleteImage from '@/components/AcademicFitAthleteImage.vue';
 
 const props = defineProps({
   athlete: {

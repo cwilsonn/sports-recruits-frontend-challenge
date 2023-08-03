@@ -18,8 +18,8 @@
 </template>
 
 <script setup>
-import AcademicFitAthleteSummary from './AcademicFitAthleteSummary.vue';
-import AcademicFitTable from './AcademicFitTable.vue';
+import AcademicFitAthleteSummary from '@/components/AcademicFitAthleteSummary.vue';
+import AcademicFitTable from '@/components/AcademicFitTable.vue';
 
 defineProps({
   athlete: {
