@@ -7,20 +7,24 @@
 <script setup>
 import { computed } from 'vue';
 
+import { useGlobalStore } from '@/store';
+
 const props = defineProps({
   gpa: {
     type: Number,
     required: true,
   },
-  referenceGpa: {
-    type: Number,
-    required: true,
-  },
+});
+
+const { state } = useGlobalStore();
+
+const computedReferenceGpa = computed(() => {
+  return state.data[0].gpa;
 });
 
 const computedClasses = computed(() => {
-  const gpaCeil = +props.referenceGpa + 0.1;
-  const gpaFloor = +props.referenceGpa - 0.1;
+  const gpaCeil = +computedReferenceGpa.value + 0.1;
+  const gpaFloor = +computedReferenceGpa.value - 0.1;
 
   // List of colors to use for the background of the cell
   // The colors are in order from highest to lowest
@@ -40,11 +44,11 @@ const computedClasses = computed(() => {
 
   if (props.gpa > gpaCeil) {
     classes.push(bgColors[0])
-  } else if (props.gpa > props.referenceGpa && props.gpa <= gpaCeil) {
+  } else if (props.gpa > computedReferenceGpa.value && props.gpa <= gpaCeil) {
     classes.push(bgColors[1]);
-  } else if (props.gpa === props.referenceGpa) {
+  } else if (props.gpa === computedReferenceGpa.value) {
     classes.push(bgColors[2])
-  } else if (props.gpa < props.referenceGpa && props.gpa >= gpaFloor) {
+  } else if (props.gpa < computedReferenceGpa.value && props.gpa >= gpaFloor) {
     classes.push(bgColors[3]);
   } else if (props.gpa < gpaFloor) {
     classes.push(bgColors[4])

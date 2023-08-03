@@ -41,8 +41,7 @@
         <AcademicFitTableRow v-for="(row, key) in report"
           :key="key"
           :row="row"
-          :reference-gpa="referenceGpa"
-          :is-odd="key % 2 > 0"></AcademicFitTableRow>
+          :is-odd="key % 2 > 0" />
       </tbody>
     </table>
     <footer class="academic-fit__table-footer mt-36 text-[13px]">
@@ -76,10 +75,6 @@ import AcademicFitTableRow from './AcademicFitTableRow.vue';
 defineProps({
   report: {
     type: Object,
-    required: true,
-  },
-  referenceGpa: {
-    type: Number,
     required: true,
   },
 });

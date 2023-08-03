@@ -3,7 +3,7 @@
     <td class="sticky left-0 z-10 p-2"
       :class="computedStripeClass">
       {{ row.school }}
-      </td>
+    </td>
     <td class="p-2 text-center"
       :class="computedStripeClass">
       {{ row.division }}
@@ -24,8 +24,7 @@
         {{ gpa }}
       </td>
       <AcademicFitTableGPACell v-else
-        :gpa="gpa"
-        :reference-gpa="referenceGpa"></AcademicFitTableGPACell>
+        :gpa="gpa" />
     </template>
     <td class="p-2 text-center"
       :class="computedStripeClass">
@@ -62,10 +61,6 @@ import AcademicFitTableGPACell from './AcademicFitTableGPACell.vue';
 const props = defineProps({
   row: {
     type: Object,
-    required: true,
-  },
-  referenceGpa: {
-    type: Number,
     required: true,
   },
   isOdd: {

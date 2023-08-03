@@ -1,7 +1,7 @@
 <template>
   <section class="flex flex-col items-start gap-y-4 sm:gap-y-0 sm:flex-row academic-fit__athlete-summary gap-x-3">
     <AcademicFitAthleteImage :athlete-name="athlete.name"
-      :image-url="athlete.profile_image"></AcademicFitAthleteImage>
+      :image-url="athlete.profile_image" />
     <div>
       <h2 class="text-xl font-bold text-brand-primary">{{ athlete.name }}</h2>
       <ul class="list-none md:columns-2">

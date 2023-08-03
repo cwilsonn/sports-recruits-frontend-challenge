@@ -1,5 +1,8 @@
-import { shallowMount, mount } from '@vue/test-utils';
+import { createTestingPinia } from '@pinia/testing';
 
+import { shallowMount } from '@vue/test-utils';
+
+import { useGlobalStore } from '../../src/store';
 import AcademicFitTableGPACell from '../../src/components/AcademicFitTableGPACell.vue';
 
 const referenceGpa = 3.5;
@@ -14,23 +17,35 @@ const gpaColorMap = {
 describe('AcademicFitTableGPACell', () => {
   it('should display a GPA given a gpa prop', () => {
     const wrapper = shallowMount(AcademicFitTableGPACell, {
+      global: {
+        plugins: [createTestingPinia()],
+      },
       propsData: {
         gpa: 3.5,
-        referenceGpa,
       },
     });
+
+    // Override the store for this test
+    const { state } = useGlobalStore();
+    state.data[0].gpa = referenceGpa;
 
     expect(wrapper.text()).toContain('3.5');
   });
 
   it('should display a dynamic background color given a referenceGpa and gpa prop', () => {
     for (const [gpa, bgColor] of Object.entries(gpaColorMap)) {
-      const wrapper = mount(AcademicFitTableGPACell, {
+      const wrapper = shallowMount(AcademicFitTableGPACell, {
+        global: {
+          plugins: [createTestingPinia()],
+        },
         propsData: {
           gpa: +gpa,
-          referenceGpa,
         },
       });
+
+      // Override the store for this test
+      const { state } = useGlobalStore();
+      state.data[0].gpa = referenceGpa;
 
       // Ensure expected dynamic background color class has been applied
       expect(wrapper.classes()).toContain(bgColor);

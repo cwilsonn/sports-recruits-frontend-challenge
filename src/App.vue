@@ -7,8 +7,10 @@
 <script setup>
 import { ref } from 'vue';
 
-import AcademicFitReport from "@/components/AcademicFitReport.vue";
-import AthleteData from "@/assets/data.json";
+import { useGlobalStore } from '@/store';
+import AcademicFitReport from '@/components/AcademicFitReport.vue';
 
-const athleteData = ref(AthleteData.data[0]);
+const { state } = useGlobalStore();
+
+const athleteData = ref(state.data[0]);
 </script>
