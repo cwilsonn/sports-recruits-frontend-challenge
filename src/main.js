@@ -1,11 +1,17 @@
 import '@/assets/main.css';
 
-import { createApp } from "vue";
+import { createApp } from 'vue';
 
-import App from "./App.vue";
-import { createPinia } from 'pinia'
+import { createPinia } from 'pinia';
 
-const app = createApp(App).use(createPinia());
+import piniaPluginPersistedState from 'pinia-plugin-persistedstate';
+
+import App from './App.vue';
+
+const pinia = createPinia();
+pinia.use(piniaPluginPersistedState);
+
+const app = createApp(App).use(pinia);
 
 app.config.productionTip = false;
 

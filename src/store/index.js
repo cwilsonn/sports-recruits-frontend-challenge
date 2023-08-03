@@ -10,4 +10,6 @@ export const useGlobalStore = defineStore('global', () => {
   return {
     state,
   };
+}, {
+  persist: true,
 });
