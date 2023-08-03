@@ -1,9 +1,10 @@
 <template>
-  <section class="text-xs academic-fit__table-wrapper">
+  <section class="relative max-w-full overflow-scroll text-xs academic-fit__table-inner">
     <table class="w-full academic-fit__table">
       <thead class="text-center text-white align-middle bg-brand-black">
         <tr>
-          <th rowspan="2">School Name</th>
+          <th class="sticky left-0 min-w-[7.5rem] z-10 bg-brand-black"
+            rowspan="2">School Name</th>
           <th rowspan="2">Athletic Div</th>
           <th rowspan="2">Conference</th>
           <th rowspan="2">
@@ -37,6 +38,11 @@
         </tr>
       </thead>
       <tbody>
+        <AcademicFitTableRow v-for="(row, key) in report"
+          :key="key"
+          :row="row"
+          :reference-gpa="referenceGpa"
+          :is-odd="key % 2 > 0"></AcademicFitTableRow>
       </tbody>
     </table>
     <footer class="academic-fit__table-footer mt-36 text-[13px]">
@@ -65,9 +71,15 @@
 </template>
 
 <script setup>
+import AcademicFitTableRow from './AcademicFitTableRow.vue';
+
 defineProps({
   report: {
     type: Object,
+    required: true,
+  },
+  referenceGpa: {
+    type: Number,
     required: true,
   },
 });
